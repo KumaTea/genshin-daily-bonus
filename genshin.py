@@ -13,7 +13,6 @@ import uuid
 import os
 
 from settings import log, CONFIG, req
-from notify import Notify
 
 
 def version():
@@ -197,7 +196,6 @@ if __name__ == '__main__':
     log.info(f'🌀原神签到小助手 {version()}')   
     log.info('若签到失败, 请尝试更新!')
     log.info('任务开始')
-    notify = Notify()
     msg_list = []
     ret = success_num = fail_num = 0
     """miHoYo BBS COOKIE
@@ -225,7 +223,6 @@ if __name__ == '__main__':
             log.error(msg)
             ret = -1
         continue
-    notify.send(status=f'成功: {success_num} | 失败: {fail_num}', msg=msg_list)
     if ret != 0:
         log.error('异常退出')
         exit(ret)
